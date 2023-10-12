@@ -1,0 +1,17 @@
+<mat-drawer-container id="side-menu-container">
+    <mat-drawer id="side-menu" #drawer mode="side">
+        <div id="menu-title">
+            <h1>Real Investments</h1>
+        </div>
+        <nav id="pages-links">
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Finances</a></li>
+                <li><a href="#">Real Estates</a></li>
+            </ul>
+        </nav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <button id="btn-toggle-side" (click)="drawer.toggle()" [innerHTML]="drawer.opened ? 'x':'>'"></button>
+    </mat-drawer-content>
+</mat-drawer-container>

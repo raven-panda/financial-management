@@ -1,0 +1,26 @@
+@import '/src/assets/scss/variables';
+
+#side-menu-container {
+    min-height: 100vh;
+}
+
+#side-menu {
+    min-height: 100vh;
+    min-width: 20vw;
+    padding: 0 20px;
+    background: $bg_secondary;
+    border: none;
+}
+
+#pages-links > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#btn-toggle-side {
+    padding: 36px 10px;
+    border-radius: 0 0 10px 0;
+    border: none;
+    background: darken($bg_secondary, 10%);
+}
