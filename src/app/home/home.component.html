@@ -1,19 +1,49 @@
 <div class="container">
     <header>
         <h1>Manage your investments</h1>
+        <mat-card>
+            <mat-card-content>
+                <h2>Investments overview</h2>
+                **
+            </mat-card-content>
+        </mat-card>
     </header>
     <main>
-        <mat-card>
-            <mat-card-content>
-                <app-chart name="testpie" type="pie" title="Financial investments overview"></app-chart>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam ut rerum eveniet praesentium dicta. Ad quod molestias sed ut. Laboriosam dolores nostrum cumque ullam esse ea voluptatum libero dolorum sint.</p>
-            </mat-card-content>
-        </mat-card>
-        <mat-card>
-            <mat-card-content>
-                <app-chart name="testcolumns" type="column" title="Real estates investments overview"></app-chart>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore rerum exercitationem recusandae, explicabo voluptatibus error soluta optio nulla corrupti ex vel debitis! Reiciendis modi dolorum ipsum qui soluta laudantium eos.</p>
-            </mat-card-content>
-        </mat-card>
+        <ng-template ngFor let-card [ngForOf]="cards">
+            <mat-card>
+                <mat-card-header>
+                    <div class="card-actions">
+                        <button class="btn-add">Add Investment</button>
+                        <button class="btn-see-all">See all Investments</button>
+                    </div>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="card-core">
+                        <div class="card-col">
+                            <app-chart [name]="card.chartName" [type]="card.chartType"></app-chart>
+                        </div>
+                        <div class="card-col">
+                            <div>
+                                <h3>Total invested : amount</h3>
+                            </div>
+                            <table class="invests-list">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Investment name</td>
+                                        <td>$Amount</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </ng-template>
     </main>
 </div>

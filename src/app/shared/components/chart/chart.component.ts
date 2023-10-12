@@ -3,11 +3,11 @@ import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-chart',
-  templateUrl: './chart.component.html'
+  templateUrl: './chart.component.html',
+  styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent {
   // Setting up Inputs for passing data through HTML attributes
-  @Input({required: true}) title: string|undefined = undefined;
   @Input({required: true}) type: "pie"|"column" = "pie";
   @Input({required: true}) name: string = "";
   
@@ -19,9 +19,6 @@ export class ChartComponent {
   ngOnChanges() {
     // Affectation of the chart options after changes passed by Inputs decorator
     this.chartOptions = {
-      title: {
-        text: this.title,
-      },
       series: [{
         type: this.type,
         name: this.name,

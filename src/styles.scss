@@ -5,5 +5,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: $bg_primary;}
+* {font-family: Roboto, "Helvetica Neue", sans-serif;}
 a { color: $text_color; text-decoration: none; }
 ul { padding: 0; list-style: none; }
+button {border: none; &:hover{ cursor: pointer; filter: brightness(97%); } &:active{ filter: brightness(94%); }}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CardTempalting } from 'src/app/core/models/cardtemplating';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
+  // Array that will contain cards informations for templating
+  cards: Array<CardTempalting> = [
+    {
+      chartName: "testpie",
+      chartType: "pie"
+    },
+    {
+      chartName: "testcolumns",
+      chartType: "column",
+    }
+  ]
 }
