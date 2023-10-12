@@ -1,4 +1,19 @@
+@import '/src/assets/scss/mixins';
+@import '/src/assets/scss/variables';
 .container {
-    display: flex;
+    @include flex(
+        $direction: column,
+        $justify: space-around
+    );
     padding: 1.25rem;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+main {
+    @include flex(
+        $direction: row,
+        $justify: space-around,
+        $gap: 3.125rem
+    );
 }

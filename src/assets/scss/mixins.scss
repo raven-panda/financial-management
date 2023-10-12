@@ -1,0 +1,13 @@
+@mixin flex($direction: column, $justify: unset, $align: unset, $gap: unset) {
+    display: flex;
+    flex-direction: $direction;
+    @if $justify != unset {
+        justify-content: $justify;
+    }
+    @if $align != unset {
+        align-items: $align;
+    }
+    @if $gap != unset {
+        gap: $gap;
+    }
+}

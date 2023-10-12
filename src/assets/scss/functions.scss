@@ -1,0 +1,8 @@
+@function changeOpacity($color, $factor) {
+    @if $factor > 1 {
+        @error "Seule une décimale de 0 à 1 est acceptée pour le facteur: #{$factor} reçu.";
+    }
+
+    $new_color: rgba(red($color), blue($color), green($color), $factor);
+    @return $new_color;
+}
