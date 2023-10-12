@@ -1,4 +1,4 @@
-# Finance Management
+# Finance Management (WIP)
 
 ![made-by-me](https://github.com/raven-panda/ressources/blob/main/badges/made-by-me.svg)
 
