@@ -18,13 +18,16 @@
                     </div>
                 </mat-card-header>
                 <mat-card-content>
+                    <div class="card-title">
+                        <h3>{{card.chartName}} investments overview</h3>
+                    </div>
                     <div class="card-core">
                         <div class="card-col">
-                            <app-chart [name]="card.chartName" [type]="card.chartType"></app-chart>
+                            <app-chart [name]="card.chartName" [type]="card.chartType" [data]="card.chartData" [xaxis]="card.chartXaxis ? card.chartXaxis : false" [yaxis]="card.chartYaxis ? card.chartYaxis : false"></app-chart>
                         </div>
                         <div class="card-col">
                             <div>
-                                <h3>Total invested : amount</h3>
+                                <h3>Total invested : ${{card.total}}</h3>
                             </div>
                             <table class="invests-list">
                                 <thead>
@@ -34,10 +37,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Investment name</td>
-                                        <td>$Amount</td>
-                                    </tr>
+                                    <ng-template ngFor let-investment [ngForOf]="card.chartData">
+                                        <tr>
+                                            <td>{{investment[0]}}</td>
+                                            <td>${{investment[1]}}</td>
+                                        </tr>
+                                    </ng-template>
                                 </tbody>
                             </table>
                         </div>
