@@ -22,6 +22,8 @@
                     return array("201" => 'Server Warning: No changes.');
                 case 202:
                     return array("202" => 'Server Error: Already exists.');
+                case 203:
+                    return array("203" => 'Server Error: Services are temporarly unavailable. Try again later.');
                 case 210:
                     return array("210" => 'Server Error: Not found.');
                         

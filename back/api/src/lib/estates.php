@@ -68,5 +68,7 @@
         } else {
             $GLOBALS['response'] = $RES->errorMessage(100);
         }
+    } else {
+        $GLOBALS['response'] = $RES->errorMessage(203);
     }
 ?>
