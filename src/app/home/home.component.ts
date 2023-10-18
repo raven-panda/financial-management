@@ -77,7 +77,7 @@ export class HomeComponent {
             chartData: this.cds.estates,
             chartXaxis: this.cds.estatesName,
             chartYaxis: 'Amount',
-            total: 0
+            total: this.cds.totalEstatesAmount
           }
         ]
       }
