@@ -1,10 +1,11 @@
 export interface InvestmentInterface {
     id: number,
     name: string,
-    amount: number
+    amount: number,
+    date: Date
 }
 
-export interface InvestmentFormdataInterface {
+export interface InvestmentStringdateInterface {
     name: string,
     amount: number,
     category: string,

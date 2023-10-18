@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { InvestmentFormdataInterface } from 'src/app/core/models/chartsdata';
+import { InvestmentStringdateInterface } from 'src/app/core/models/chartsdata';
 import { RequestResInterface } from 'src/app/core/models/requestresponse';
 import { ModalCaseInterface } from 'src/app/core/models/switchform';
 import { InvestActionService } from 'src/app/core/services/investaction/investaction.service';
@@ -24,7 +24,7 @@ export class ModalboxComponent {
 
   public onSubmit() {
     let {name, amount, category} = this.form.value;
-    const formdata: InvestmentFormdataInterface = {
+    const formdata: InvestmentStringdateInterface = {
       name, amount, category, date: this.form.controls['date'].value.toISOString().slice(0, 19).replace('T', ' ')
     };
 
