@@ -8,6 +8,13 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <h1>Add an investment</h1>
             <mat-form-field>
+                <mat-label>Investment category</mat-label>
+                <mat-select formControlName="category">
+                    <mat-option value="financial">Financial</mat-option>
+                    <mat-option value="real-estates">Real Estate</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input matInput MatFormFieldControl type="text" formControlName="name" required>
                 <mat-error *ngIf="form.controls['name'].hasError('required') && (form.controls['name'].touched || form.controls['name'].dirty)">
@@ -25,11 +32,13 @@
                 </mat-error>
             </mat-form-field>
             <mat-form-field>
-                <mat-label>Investment category</mat-label>
-                <mat-select formControlName="category">
-                    <mat-option value="financial">Financial</mat-option>
-                    <mat-option value="real-estates">Real Estate</mat-option>
-                </mat-select>
+                <mat-label>Choose a date (MM/DD/YYYY)</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.controls['date'].hasError('required') && (form.controls['date'].touched || form.controls['date'].dirty)">
+                    <label>This field is required or it's not in the right formt : MM/DD/YYYY.</label>
+                </mat-error>
             </mat-form-field>
             <button mat-raised-button type="submit" [disabled]="!form.valid">Valider</button>
         </form>

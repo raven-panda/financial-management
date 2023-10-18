@@ -85,7 +85,6 @@ export class HomeComponent {
   }
 
   public addInvestment(name: string) {
-    console.log(name);
     const dialogData: ModalCaseInterface = {
       type: 'addinvestment',
       extra: name

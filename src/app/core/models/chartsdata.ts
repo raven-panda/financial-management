@@ -7,5 +7,6 @@ export interface InvestmentInterface {
 export interface InvestmentFormdataInterface {
     name: string,
     amount: number,
-    category: string
+    category: string,
+    date: string
 }

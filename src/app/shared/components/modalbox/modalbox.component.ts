@@ -18,16 +18,23 @@ export class ModalboxComponent {
   public form: FormGroup = this.fb.group({
     name: this.fb.control('', Validators.required),
     amount: this.fb.control('', Validators.required),
-    category: this.fb.control(this.reason.extra, Validators.required)
+    category: this.fb.control(this.reason.extra, Validators.required),
+    date: this.fb.control('', Validators.compose([Validators.required]))
   })
 
   public onSubmit() {
-    const formdata: InvestmentFormdataInterface = this.form.value;
+    let {name, amount, category} = this.form.value;
+    const formdata: InvestmentFormdataInterface = {
+      name, amount, category, date: this.form.controls['date'].value.toISOString().slice(0, 19).replace('T', ' ')
+    };
+
     this.ias.postRequest(formdata).subscribe({
       next: (res: RequestResInterface) => {
         if (res.code !== '1') {
           if (res.code === '202') {
             this.form.controls['name'].setErrors({'already-exists' : true});
+          } else {
+            console.error(res);
           }
         } else {
           this.dialRef.close();
