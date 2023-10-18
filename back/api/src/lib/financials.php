@@ -13,17 +13,17 @@
             $jsondata = file_get_contents('php://input');
             $decoded = sanitizeObject(json_decode($jsondata, true));
 
-            if ($decoded && isset($decoded['finName']) && isset($decoded['finAmount']) && !empty($decoded['finName']) && !empty($decoded['finAmount'])) {
+            if ($decoded && isset($decoded['name']) && isset($decoded['amount']) && !empty($decoded['name']) && !empty($decoded['amount'])) {
                 
-                $finName = htmlspecialchars($decoded['finName']);
-                $finAmount = htmlspecialchars($decoded['finAmount']);
+                $name = htmlspecialchars($decoded['name']);
+                $amount = htmlspecialchars($decoded['amount']);
     
                 try {
 
                     $sql = "INSERT INTO `financials` (`name`, `amount`) VALUES (:name, :amount)";
                     $sth = $mysql_connection->prepare($sql);
-                    $sth->bindParam(':name', $finName, PDO::PARAM_STR);
-                    $sth->bindParam(':amount', $finAmount, PDO::PARAM_STR);
+                    $sth->bindParam(':name', $name, PDO::PARAM_STR);
+                    $sth->bindParam(':amount', $amount, PDO::PARAM_STR);
     
                     $sth->execute();
     
