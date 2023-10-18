@@ -17,13 +17,15 @@
                 
                 $name = htmlspecialchars($decoded['name']);
                 $amount = htmlspecialchars($decoded['amount']);
+                $date = htmlspecialchars($decoded['date']);
     
                 try {
 
-                    $sql = "INSERT INTO `financials` (`name`, `amount`) VALUES (:name, :amount)";
+                    $sql = "INSERT INTO `financials` (`name`, `amount`, `date`) VALUES (:name, :amount, :date)";
                     $sth = $mysql_connection->prepare($sql);
                     $sth->bindParam(':name', $name, PDO::PARAM_STR);
                     $sth->bindParam(':amount', $amount, PDO::PARAM_STR);
+                    $sth->bindParam(':date', $date, PDO::PARAM_STR);
     
                     $sth->execute();
     
