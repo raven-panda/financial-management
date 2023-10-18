@@ -22,20 +22,20 @@ export class ChartdataService {
   /**
    * @returns Name and amount of each financial investments in an array
    */
-  public get financials(): Array<Array<string|number>> {
+  public get financials(): Array<Array<string|number|Date>> {
     return this.financialsData.map(obj => {
-      let { name, amount } = obj;
-      return Object.values({ name, amount });
+      let { name, amount, date } = obj;
+      return Object.values({ name, amount, date });
     });
   }
 
   /**
    * @returns Name and amount of each real estates investments in an array
    */
-  public get estates(): Array<Array<string|number>> {
+  public get estates(): Array<Array<string|number|Date>> {
     return this.estatesData.map(obj => {
-      let { name, amount } = obj;
-      return Object.values({ name, amount });
+      let { name, amount, date } = obj;
+      return Object.values({ name, amount, date });
     });
   }
   

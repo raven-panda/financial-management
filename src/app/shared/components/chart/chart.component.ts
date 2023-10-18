@@ -10,7 +10,7 @@ export class ChartComponent {
   // Setting up Inputs for passing data through HTML attributes
   @Input({required: true}) type: "pie"|"column" = "pie";
   @Input({required: true}) name: string = "";
-  @Input({required: true}) data: Array<Array<string|number>> = [];
+  @Input({required: true}) data: Array<Array<string|number|Date>> = [];
   @Input() xaxis: Array<string>|false = [];
   @Input() yaxis: string|false = '';
   

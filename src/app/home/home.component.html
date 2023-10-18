@@ -34,6 +34,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Amount</th>
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,6 +42,7 @@
                                         <tr>
                                             <td>{{investment[0]}}</td>
                                             <td>${{investment[1]}}</td>
+                                            <td>{{investment[2] | date: 'MM-dd-yyyy'}}</td>
                                         </tr>
                                     </ng-template>
                                 </tbody>
