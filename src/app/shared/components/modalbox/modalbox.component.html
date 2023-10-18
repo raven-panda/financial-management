@@ -10,14 +10,23 @@
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input matInput MatFormFieldControl type="text" formControlName="name" required>
+                <mat-error *ngIf="form.controls['name'].hasError('required') && (form.controls['name'].touched || form.controls['name'].dirty)">
+                    <label>This field is required.</label>
+                </mat-error>
+                <mat-error *ngIf="form.controls['name'].hasError('already-exists') && (form.controls['name'].touched || form.controls['name'].dirty)">
+                    <label>This investment already exist. Please use another name.</label>
+                </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Amount</mat-label>
                 <input matInput MatFormFieldControl type="number" formControlName="amount" required>
+                <mat-error *ngIf="form.controls['amount'].hasError('required') && (form.controls['amount'].touched || form.controls['amount'].dirty)">
+                    <label>This field is required.</label>
+                </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Investment category</mat-label>
-                <mat-select [(value)]="reason.extra">
+                <mat-select formControlName="category">
                     <mat-option value="financial">Financial</mat-option>
                     <mat-option value="real-estates">Real Estate</mat-option>
                 </mat-select>
