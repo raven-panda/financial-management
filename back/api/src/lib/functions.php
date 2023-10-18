@@ -11,25 +11,25 @@
             switch ($code) {
                 // Form invalidity errors/warnings
                 case 100:
-                    return array('100' => 'Syntax Error: Fields are missing or incorrect.');
+                    return array('code' => '100', 'context' => 'Syntax Error: Fields are missing or incorrect.');
                 case 101:
-                    return array('101' => 'Syntax Error: Special characters aren\'t allowed.');
+                    return array('code' => '101', 'context' => 'Syntax Error: Special characters aren\'t allowed.');
 
                 // PDO MySQL errors/warnings
                 case 200:
-                    return array("200" => 'Server Error: There was a problem during your request, please try again.');
+                    return array('code' => "200", 'context' => 'Server Error: There was a problem during your request, please try again.');
                 case 201:
-                    return array("201" => 'Server Warning: No changes.');
+                    return array('code' => "201", 'context' => 'Server Warning: No changes.');
                 case 202:
-                    return array("202" => 'Server Error: Already exists.');
+                    return array('code' => "202", 'context' => 'Server Error: Already exists.');
                 case 203:
-                    return array("203" => 'Server Error: Services are temporarly unavailable. Try again later.');
+                    return array('code' => "203", 'context' => 'Server Error: Services are temporarly unavailable. Try again later.');
                 case 210:
-                    return array("210" => 'Server Error: Not found.');
+                    return array('code' => "210", 'context' => 'Server Error: Not found.');
                         
                 // API request errors/warnings
                 case 400:
-                    return array("400" => "Request Error: Path or method used may be incorrect.");
+                    return array('code' => "400", 'context' => "Request Error: Path or method used may be incorrect.");
                 default:
                     return null;
             }
@@ -41,11 +41,11 @@
         function validMessage($code) {
             switch ($code) {
                 case 1:
-                    return array("1" => 'Server: Added Successfully.');
+                    return array('code' => "1", 'context' => 'Server: Added Successfully.');
                 case 2:
-                    return array("2" => 'Server: Edited Successfully.');
+                    return array('code' => "2", 'context' => 'Server: Edited Successfully.');
                 case 3:
-                    return array("3" => 'Server: Deleted Successfully.');
+                    return array('code' => "3", 'context' => 'Server: Deleted Successfully.');
                 default:
                     return null;
             }
