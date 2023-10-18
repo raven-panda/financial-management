@@ -4,7 +4,7 @@
 
     if ($mysql_connection) {
         if ($request_method === 'GET') {
-            $sql = "SELECT `id`, `name`, `amount` FROM `financials`";
+            $sql = "SELECT `id`, `name`, `amount`, `date` FROM `financials`";
             $sth = $mysql_connection->query($sql);
     
             $GLOBALS['response'] = $sth->fetchAll(PDO::FETCH_ASSOC);
