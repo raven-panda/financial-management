@@ -3,3 +3,9 @@ export interface InvestmentInterface {
     name: string,
     amount: number
 }
+
+export interface InvestmentFormdataInterface {
+    name: string,
+    amount: number,
+    category: string
+}

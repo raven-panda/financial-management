@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { InvestmentInterface } from '../../models/chartsdata';
-import { ChartdataService } from '../chartdata/chartdata.service';
+import { InvestmentInterface } from 'src/app/core/models/chartsdata';
+import { ChartdataService } from 'src/app/core/services/chartdata/chartdata.service';
+import { ApiEndpoints } from 'src/app/core/classes/apiendpoints/apiendpoints';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -44,15 +45,4 @@ export class BackfetchService {
       }
     });
   }
-}
-
-/**
- * All API endpoints with domain as private property
- */
-class ApiEndpoints {
-  private static readonly domain = 'http://localhost';
-  
-  public static readonly api: string = this.domain + '/api';
-  public static readonly financials: string = this.domain + '/api/financials';
-  public static readonly estates: string = this.domain + '/api/estates';
 }

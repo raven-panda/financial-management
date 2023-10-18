@@ -1,4 +1,7 @@
 @import '/src/assets/scss/mixins.scss';
+mat-dialog-content {
+    min-width: 25vw;
+}
 form {
     @include flex();
 }

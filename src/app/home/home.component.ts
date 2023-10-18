@@ -14,7 +14,7 @@ import { ModalCaseInterface } from '../core/models/switchform';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private ids: ChartdataService,
+  constructor(private cds: ChartdataService,
               private bfs: BackfetchService,
               private modal: MatDialog){}
   // Array that will contain cards informations for templating
@@ -62,20 +62,20 @@ export class HomeComponent {
    */
   private loadDatas(): void {
     this.bfs.fetchData();
-    combineLatest([this.ids.financialsData$, this.ids.estatesData$]).subscribe({
+    combineLatest([this.cds.financialsData$, this.cds.estatesData$]).subscribe({
       next: () => {
         this.cards = [
           {
             chartName: "financial",
             chartType: "pie",
-            chartData: this.ids.financials,
-            total: this.ids.totalFinancialsAmount
+            chartData: this.cds.financials,
+            total: this.cds.totalFinancialsAmount
           },
           {
             chartName: "real-estates",
             chartType: "column",
-            chartData: this.ids.estates,
-            chartXaxis: this.ids.estatesName,
+            chartData: this.cds.estates,
+            chartXaxis: this.cds.estatesName,
             chartYaxis: 'Amount',
             total: 0
           }
@@ -92,6 +92,8 @@ export class HomeComponent {
     }
     this.modal.open(ModalboxComponent, {
       data: dialogData
+    }).afterClosed().subscribe({
+      next: () => this.bfs.fetchData()
     })
   } 
 }
