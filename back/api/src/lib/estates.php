@@ -15,7 +15,7 @@
             $jsondata = file_get_contents('php://input');
             $decoded = sanitizeObject(json_decode($jsondata, true));
 
-            if ($decoded && isset($decoded['name']) && isset($decoded['amount']) && !empty($decoded['name']) && !empty($decoded['amount'])) {
+            if ($decoded && isset($decoded['name']) && isset($decoded['amount']) && !empty($decoded['name']) && !empty($decoded['amount']) && isset($decoded['date']) && !empty($decoded['date'])) {
                 
                 $name = htmlspecialchars($decoded['name']);
                 $amount = htmlspecialchars($decoded['amount']);

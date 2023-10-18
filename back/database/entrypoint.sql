@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `investdb`.`financials` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `amount` INT NOT NULL,
+  `date` DATE NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -33,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `investdb`.`estates` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `amount` INT NOT NULL,
+  `date` DATE NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
 ENGINE = InnoDB;
