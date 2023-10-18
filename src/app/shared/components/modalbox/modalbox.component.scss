@@ -1,0 +1,4 @@
+@import '/src/assets/scss/mixins.scss';
+form {
+    @include flex();
+}

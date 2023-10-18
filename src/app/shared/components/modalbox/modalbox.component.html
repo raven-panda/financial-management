@@ -4,4 +4,25 @@
         <p>Servers are maybe under maintenance or having issues. Please try again later.</p>
         <p>For more informations, contact support at <a href="mailto:realinvestments@support.com">realinvestments@support.com</a></p>
     </ng-template>
+    <ng-template ngSwitchCase="addinvestment">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h1>Add an investment</h1>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput MatFormFieldControl type="text" formControlName="name" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Amount</mat-label>
+                <input matInput MatFormFieldControl type="number" formControlName="amount" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Investment category</mat-label>
+                <mat-select [(value)]="reason.extra">
+                    <mat-option value="financial">Financial</mat-option>
+                    <mat-option value="real-estates">Real Estate</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-raised-button type="submit" [disabled]="!form.valid">Valider</button>
+        </form>
+    </ng-template>
 </mat-dialog-content>
