@@ -49,9 +49,7 @@ export class HomeComponent {
         }
         this.modal.open(ModalboxComponent, {
           disableClose: true,
-          data: {
-            type: 'api-404'
-          }
+          data: dialogData
         });
       }
     })
