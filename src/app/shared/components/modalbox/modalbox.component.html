@@ -1,4 +1,4 @@
-<mat-dialog-content [ngSwitch]="reason">
+<mat-dialog-content [ngSwitch]="reason.type">
     <ng-template ngSwitchCase="api-404">
         <h1>Server are temporarly unavailable</h1>
         <p>Servers are maybe under maintenance or having issues. Please try again later.</p>

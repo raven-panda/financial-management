@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class InvestsdataService {
+export class ChartdataService {
   constructor() {}
 
   // Temporary storage of datas in arrays, used to display them in the front

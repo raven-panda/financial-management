@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { InvestmentInterface } from '../../models/chartsdata';
-import { InvestsdataService } from '../investsdata/investsdata.service';
+import { ChartdataService } from '../chartdata/chartdata.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class BackfetchService {
   constructor(private http: HttpClient,
-              private ids: InvestsdataService) { }
+              private ids: ChartdataService) { }
 
   /**
    * It returned observable will be used to check if the API is available.

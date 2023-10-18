@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CardTempalting } from 'src/app/core/models/cardtemplating';
-import { InvestsdataService } from '../core/services/investsdata/investsdata.service';
+import { ChartdataService } from '../core/services/chartdata/chartdata.service';
 import { BackfetchService } from '../core/services/backfetch/backfetch.service';
 import { combineLatest } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalboxComponent } from '../shared/components/modalbox/modalbox.component';
+import { ModalCaseInterface } from '../core/models/switchform';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ import { ModalboxComponent } from '../shared/components/modalbox/modalbox.compon
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private ids: InvestsdataService,
+  constructor(private ids: ChartdataService,
               private bfs: BackfetchService,
               private modal: MatDialog){}
   // Array that will contain cards informations for templating
@@ -25,7 +26,7 @@ export class HomeComponent {
       total: 0
     },
     {
-      chartName: "real estates",
+      chartName: "real-estates",
       chartType: "column",
       chartData: [],
       chartYaxis: 'Amount',
@@ -43,9 +44,14 @@ export class HomeComponent {
       },
       error: (res: HttpErrorResponse) => {
         console.error(res);
+        const dialogData: ModalCaseInterface = {
+          type: 'api-404'
+        }
         this.modal.open(ModalboxComponent, {
           disableClose: true,
-          data: 'api-404'
+          data: {
+            type: 'api-404'
+          }
         });
       }
     })
@@ -60,13 +66,13 @@ export class HomeComponent {
       next: () => {
         this.cards = [
           {
-            chartName: "fiancial",
+            chartName: "financial",
             chartType: "pie",
             chartData: this.ids.financials,
             total: this.ids.totalFinancialsAmount
           },
           {
-            chartName: "real estates",
+            chartName: "real-estates",
             chartType: "column",
             chartData: this.ids.estates,
             chartXaxis: this.ids.estatesName,
@@ -77,4 +83,15 @@ export class HomeComponent {
       }
     })
   }
+
+  public addInvestment(name: string) {
+    console.log(name);
+    const dialogData: ModalCaseInterface = {
+      type: 'addinvestment',
+      extra: name
+    }
+    this.modal.open(ModalboxComponent, {
+      data: dialogData
+    })
+  } 
 }
