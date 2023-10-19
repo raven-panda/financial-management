@@ -60,6 +60,15 @@ export class ChartdataService {
   }
 
   /**
+   * @returns Last invesments
+   */
+  public get getLastInvestments(): Array<Array<string|number|Date>> {
+    const lastInvestments: Array<Array<string|number|Date>> = this.financials.concat(this.estates);
+    lastInvestments.sort((a, b) =>  new Date(b[2]).getTime() - new Date(a[2]).getTime())
+    return lastInvestments.slice(0, 5);
+  }
+
+  /**
    * Sets fetched datas from api to the financials array.
    */
   public set retrieveFinancialsData(arr: Array<InvestmentInterface>) {

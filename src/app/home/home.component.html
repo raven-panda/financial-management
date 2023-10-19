@@ -4,7 +4,33 @@
         <mat-card>
             <mat-card-content>
                 <h2>Investments overview</h2>
-                **
+                <div class="card-core card-overview">
+                    <div class="last-investments card-col">
+                        <h3>Your last investments</h3>
+                        <table class="header-invests-list">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-template ngFor let-investment [ngForOf]="lastInvestments">
+                                    <tr>
+                                        <td>{{investment[0]}}</td>
+                                        <td>{{investment[1]}}</td>
+                                        <td>{{investment[2] | date: 'MM-dd-yyyy'}}</td>
+                                    </tr>
+                                </ng-template>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-col">
+                        <h4>Recently, you invested : ${{totalLastInvesments}}</h4>
+                        <app-chart type="line" name="Investments Overview" [data]="lastInvestments"></app-chart>
+                    </div>
+                </div>
             </mat-card-content>
         </mat-card>
     </header>

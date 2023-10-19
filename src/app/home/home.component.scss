@@ -61,6 +61,9 @@ mat-card {
     .card-col {
         @include flex();
     }
+    .card-row {
+        @include flex(row);
+    }
 }
 .invests-list {
     thead {
@@ -72,5 +75,15 @@ mat-card {
     }
     th, td {
         border: solid 1px changeOpacity($text_color, 0.1);
+        padding: 0 5px;
+    }
+}
+.card-overview {
+    column-gap: 50px;
+}
+.header-invests-list {
+    @extend .invests-list;
+    thead, th, td {
+        padding: 5px 20px;
     }
 }

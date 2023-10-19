@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalboxComponent } from '../shared/components/modalbox/modalbox.component';
 import { ModalCaseInterface } from '../core/models/switchform';
+import { InvestmentInterface } from '../core/models/chartsdata';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponent {
               private bfs: BackfetchService,
               private modal: MatDialog){}
   // Array that will contain cards informations for templating
-  cards: Array<CardTempalting> = [
+  public cards: Array<CardTempalting> = [
     {
       chartName: 'financial',
       chartType: "pie",
@@ -26,13 +27,16 @@ export class HomeComponent {
       total: 0
     },
     {
-      chartName: "real-estates",
+      chartName: "Real Estates",
       chartType: "column",
       chartData: [],
       chartYaxis: 'Amount',
       total: 0
     }
   ]
+
+  public lastInvestments: Array<Array<string|number|Date>> = [];
+  public totalLastInvesments: number = 0;
 
   /**
    * Check on init if the API is available, and display dialog box if not.
@@ -62,15 +66,17 @@ export class HomeComponent {
     this.bfs.fetchData();
     combineLatest([this.cds.financialsData$, this.cds.estatesData$]).subscribe({
       next: () => {
+        this.lastInvestments = this.cds.getLastInvestments;
+        this.lastInvestments.forEach(arr => this.totalLastInvesments += Number(arr[1]));
         this.cards = [
           {
-            chartName: "financial",
+            chartName: "Financial",
             chartType: "pie",
             chartData: this.cds.financials,
             total: this.cds.totalFinancialsAmount
           },
           {
-            chartName: "real-estates",
+            chartName: "Real Estates",
             chartType: "column",
             chartData: this.cds.estates,
             chartXaxis: this.cds.estatesName,
