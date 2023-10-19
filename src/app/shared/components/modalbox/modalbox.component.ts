@@ -16,17 +16,30 @@ export class ModalboxComponent {
   public reason: ModalCaseInterface = this.dialogData;
 
   public form: FormGroup = this.fb.group({
-    name: this.fb.control('', Validators.required),
-    amount: this.fb.control('', Validators.required),
-    category: this.fb.control(this.reason.extra, Validators.required),
-    date: this.fb.control('', Validators.compose([Validators.required]))
+    name: this.fb.control<string>('', Validators.required),
+    amount: this.fb.control<number>(0, Validators.required),
+    category: this.fb.control<string|undefined>(this.reason.extra, Validators.required),
+    dateRange: this.fb.group({
+      start: this.fb.control<Date|undefined>(undefined, Validators.required),
+      end: this.fb.control<Date|undefined>(undefined, Validators.required)
+    }),
+    status: this.fb.control<string>('', Validators.required),
+    roi: this.fb.control<number>(0, Validators.required),
+    location: this.fb.control<string>('', Validators.required),
+    description: this.fb.control<string>('', Validators.maxLength(255)),
   })
 
   public onSubmit() {
-    let {name, amount, category} = this.form.value;
+    let { name, amount, category, status, roi, location, description } = this.form.value;
+    let stringifiedDate = this.form.value.dateRange.start.toISOString().slice(0, 19).replace('T', ' ');
+
     const formdata: InvestmentStringdateInterface = {
-      name, amount, category, date: this.form.controls['date'].value.toISOString().slice(0, 19).replace('T', ' ')
+      name, amount, category, date: stringifiedDate, status, roi, location, description,
+      duration: this.form.value.dateRange.end.getTime() - this.form.value.dateRange.start.getTime()
     };
+
+    if (!description) formdata.description = 'undefined';
+    console.log(formdata);
 
     this.ias.postRequest(formdata).subscribe({
       next: (res: RequestResInterface) => {

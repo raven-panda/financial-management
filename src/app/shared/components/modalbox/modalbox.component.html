@@ -7,40 +7,87 @@
     <ng-template ngSwitchCase="addinvestment">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <h1>Add an investment</h1>
-            <mat-form-field>
-                <mat-label>Investment category</mat-label>
-                <mat-select formControlName="category">
-                    <mat-option value="financial">Financial</mat-option>
-                    <mat-option value="real-estates">Real Estate</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Name</mat-label>
-                <input matInput MatFormFieldControl type="text" formControlName="name" required>
-                <mat-error *ngIf="form.controls['name'].hasError('required') && (form.controls['name'].touched || form.controls['name'].dirty)">
-                    <label>This field is required.</label>
-                </mat-error>
-                <mat-error *ngIf="form.controls['name'].hasError('already-exists') && (form.controls['name'].touched || form.controls['name'].dirty)">
-                    <label>This investment already exist. Please use another name.</label>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Amount</mat-label>
-                <input matInput MatFormFieldControl type="number" formControlName="amount" required>
-                <mat-error *ngIf="form.controls['amount'].hasError('required') && (form.controls['amount'].touched || form.controls['amount'].dirty)">
-                    <label>This field is required.</label>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Choose a date (MM/DD/YYYY)</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="date">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-error *ngIf="form.controls['date'].hasError('required') && (form.controls['date'].touched || form.controls['date'].dirty)">
-                    <label>This field is required or it's not in the right formt : MM/DD/YYYY.</label>
-                </mat-error>
-            </mat-form-field>
-            <button mat-raised-button type="submit" [disabled]="!form.valid">Valider</button>
+            <div class="form-core">
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Investment category</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option value="Financial">Financial</mat-option>
+                            <mat-option value="Real Estates">Real Estate</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+        
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput MatFormFieldControl type="text" formControlName="name" required>
+                        <mat-error *ngIf="form.controls['name'].hasError('required') && (form.controls['name'].touched || form.controls['name'].dirty)">
+                            <label>This field is required.</label>
+                        </mat-error>
+                        <mat-error *ngIf="form.controls['name'].hasError('already-exists') && (form.controls['name'].touched || form.controls['name'].dirty)">
+                            <label>This investment already exist. Please use another name.</label>
+                        </mat-error>
+                    </mat-form-field>
+        
+                    <mat-form-field>
+                        <mat-label>Amount</mat-label>
+                        <input matInput MatFormFieldControl type="number" formControlName="amount" required>
+                        <mat-error *ngIf="form.controls['amount'].hasError('required') && (form.controls['amount'].touched || form.controls['amount'].dirty)">
+                            <label>This field is required.</label>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Location</mat-label>
+                        <input matInput type="text" formControlName="location" required>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Enter a date range</mat-label>
+                        <mat-date-range-input formGroupName="dateRange" [rangePicker]="picker2">
+                          <input matStartDate formControlName="start" placeholder="Start date">
+                          <input matEndDate formControlName="end" placeholder="End date">
+                        </mat-date-range-input>
+                        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker2></mat-date-range-picker>
+                      </mat-form-field>
+    
+                </div>
+                <div class="col">
+
+                    <mat-form-field>
+                        <mat-label>Status of Investment</mat-label>
+                        <mat-select formControlName="status">
+                            <mat-option value="active">Active</mat-option>
+                            <mat-option value="inactive">Inactive</mat-option>
+                            <mat-option value="closed">Closed</mat-option>
+                            <mat-option value="for-sale">For Sale</mat-option>
+                            <mat-option value="pending">Pending</mat-option>
+                            <mat-option value="restructuring">Under Restructuring</mat-option>
+                            <mat-option value="termination">Under Termination</mat-option>
+                            <mat-option value="acquisition">Under Acquisition</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Return on Investment amount</mat-label>
+                        <input matInput type="text" formControlName="roi" required>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Write a quick description (optional)</mat-label>
+                        <textarea matInput formControlName="description" rows="5"></textarea>
+                        <mat-error *ngIf="form.controls['description'].hasError('maxlength') && (form.controls['description'].touched && form.controls['description'].dirty)">
+                            Your description exceeds the 255 characters allowed.
+                        </mat-error>
+                        <div class="char-countdown" [ngClass]="{'invalid': form.controls['description'].value.length > 240}">
+                            {{ 255 - form.controls['description'].value.length }}
+                        </div>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <button mat-raised-button type="submit" [disabled]="form.invalid">Valider</button>
         </form>
     </ng-template>
 </mat-dialog-content>

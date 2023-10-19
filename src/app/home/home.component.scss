@@ -22,8 +22,7 @@ mat-card {
 }
 
 .card-actions {
-    display: grid;
-    grid: auto/1fr 1fr;
+    @include grid(1fr 1fr);
 
     button {
         padding: 6px 0;
@@ -47,8 +46,7 @@ mat-card {
 }
 
 .card-core {
-    display: grid;
-    grid: auto/1fr 1fr;
+    @include grid(1fr 1fr);
     .card-col {
         @include flex();
     }

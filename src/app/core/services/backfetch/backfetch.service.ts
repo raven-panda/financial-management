@@ -30,10 +30,9 @@ export class BackfetchService {
         let typedData: Array<InvestmentInterface> = [];
         
         data.forEach((obj: InvestmentInterface) => {
-          let {id, name, amount} = obj;
-          obj = {
-            id, name, amount, date : new Date(obj.date)
-          }
+          let { id, name, amount, description, status, roi, location, duration } = obj;
+          obj = { id, name, amount, category: 'financial', date: new Date(obj.date), description, status, roi, location, duration };
+          
           typedData.push(obj);
         });
         
@@ -49,11 +48,9 @@ export class BackfetchService {
         let typedData: Array<InvestmentInterface> = [];
         
         data.forEach((obj: InvestmentInterface) => {
-          let {id, name, amount} = obj;
-          obj = {
-            id, name, amount, date : new Date(obj.date)
-          }
-          typedData.push(obj);
+          let { id, name, amount, description, status, roi, location, duration } = obj;
+          let newObj = { id, name, category: 'real-estates', amount, date: new Date(obj.date), description, status, roi, location, duration };
+          typedData.push(newObj);
         });
 
         this.ids.retrieveEstatesData = typedData;

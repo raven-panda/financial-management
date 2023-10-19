@@ -1,7 +1,20 @@
-@import '/src/assets/scss/mixins.scss';
+@import '/src/assets/scss/variables';
+@import '/src/assets/scss/mixins';
 mat-dialog-content {
-    min-width: 25vw;
+    min-width: 40vw;
 }
-form {
+form, .form-core .col {
     @include flex();
+}
+.form-core {
+    @include grid(
+        $columns: 1fr 1fr,
+        $gap: 20px
+    );
+}
+.char-countdown {
+    font-size: 0.75rem;
+}
+.invalid {
+    color: lighten($invalid, 25);
 }

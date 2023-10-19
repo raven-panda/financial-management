@@ -19,9 +19,9 @@ export class InvestActionService {
    */
   private switchApiEndpoint(category: string) {
     switch (category) {
-      case 'financial':
+      case 'Financial':
         return ApiEndpoints.financials;
-      case 'real-estates':
+      case 'Real Estates':
         return ApiEndpoints.estates;
       default:
         return '';

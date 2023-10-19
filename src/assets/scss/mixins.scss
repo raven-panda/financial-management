@@ -11,3 +11,15 @@
         gap: $gap;
     }
 }
+@mixin grid($columns: unset, $rows: unset, $gap: unset) {
+    display: grid;
+    @if $columns != unset {
+        grid-template-columns: $columns;
+    }
+    @if $rows != unset {
+        grid-template-columns: $columns;
+    }
+    @if $gap != unset {
+        gap: $gap;
+    }
+}
