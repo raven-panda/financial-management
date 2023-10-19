@@ -4,7 +4,7 @@
 
     if ($mysql_connection) {
         if ($request_method === 'GET') {
-            $sql = "SELECT `id`, `name`, `amount`, `date` FROM `financials`";
+            $sql = "SELECT `id`, `name`, `amount`, `date`, `description`, `status`, `roi`, `location`, `duration` FROM `financials`";
             $sth = $mysql_connection->query($sql);
     
             $GLOBALS['response'] = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -13,19 +13,41 @@
             $jsondata = file_get_contents('php://input');
             $decoded = sanitizeObject(json_decode($jsondata, true));
 
-            if ($decoded && isset($decoded['name']) && isset($decoded['amount']) && !empty($decoded['name']) && !empty($decoded['amount']) && isset($decoded['date']) && !empty($decoded['date'])) {
+            if (
+                $decoded
+                && isset($decoded['name']) && !empty($decoded['name'])
+                && isset($decoded['amount'])
+                && isset($decoded['date']) && !empty($decoded['date'])
+                && isset($decoded['description']) && !empty($decoded['description'])
+                && isset($decoded['status']) && !empty($decoded['status'])
+                && isset($decoded['roi'])
+                && isset($decoded['location']) && !empty($decoded['location'])
+                && isset($decoded['duration'])
+            ) {
                 
                 $name = htmlspecialchars($decoded['name']);
-                $amount = htmlspecialchars($decoded['amount']);
+                $amount = filter_var($decoded['amount'], FILTER_SANITIZE_NUMBER_INT);
                 $date = htmlspecialchars($decoded['date']);
-    
+                $description = htmlspecialchars($decoded['description']);
+                $status = htmlspecialchars($decoded['status']);
+                $roi = filter_var($decoded['roi'], FILTER_SANITIZE_NUMBER_INT);
+                $location = htmlspecialchars($decoded['location']);
+                $duration = filter_var($decoded['duration'], FILTER_SANITIZE_NUMBER_INT);
+
+                $GLOBALS['response'] = $decoded;
                 try {
 
-                    $sql = "INSERT INTO `financials` (`name`, `amount`, `date`) VALUES (:name, :amount, :date)";
+                    $sql = "INSERT INTO `financials` (`name`, `amount`, `date`, `description`, `status`, `roi`, `location`, `duration`) VALUES (:name, :amount, :date, :description, :status, :roi, :location, :duration)";
                     $sth = $mysql_connection->prepare($sql);
+
                     $sth->bindParam(':name', $name, PDO::PARAM_STR);
-                    $sth->bindParam(':amount', $amount, PDO::PARAM_STR);
+                    $sth->bindParam(':amount', $amount, PDO::PARAM_INT);
                     $sth->bindParam(':date', $date, PDO::PARAM_STR);
+                    $sth->bindParam(':description', $description, PDO::PARAM_STR);
+                    $sth->bindParam(':status', $status, PDO::PARAM_STR);
+                    $sth->bindParam(':roi', $roi, PDO::PARAM_INT);
+                    $sth->bindParam(':location', $location, PDO::PARAM_STR);
+                    $sth->bindParam(':duration', $duration, PDO::PARAM_INT);
     
                     $sth->execute();
     

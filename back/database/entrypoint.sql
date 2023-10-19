@@ -23,6 +23,11 @@ CREATE TABLE IF NOT EXISTS `investdb`.`financials` (
   `name` VARCHAR(255) NOT NULL,
   `amount` INT NOT NULL,
   `date` DATE NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  `status` VARCHAR(255) NOT NULL,
+  `roi` INT NOT NULL,
+  `location` VARCHAR(255) NOT NULL,
+  `duration` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -35,6 +40,11 @@ CREATE TABLE IF NOT EXISTS `investdb`.`estates` (
   `name` VARCHAR(255) NOT NULL,
   `amount` INT NOT NULL,
   `date` DATE NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  `status` VARCHAR(255) NOT NULL,
+  `roi` INT NOT NULL,
+  `location` VARCHAR(255) NOT NULL,
+  `duration` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
 ENGINE = InnoDB;
