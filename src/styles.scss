@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '/src/assets/scss/variables';
+@import '/src/assets/scss/mixins';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 html, body { height: 100%; }
@@ -11,3 +12,12 @@ ul { padding: 0; list-style: none; }
 button {border: none; &:hover{ cursor: pointer; filter: brightness(97%); } &:active{ filter: brightness(94%); }}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.container {
+    @include flex(
+        $direction: column,
+        $justify: space-around
+    );
+    padding: 1.25rem;
+    box-sizing: border-box;
+    min-height: 100vh;
+}

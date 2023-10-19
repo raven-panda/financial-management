@@ -1,15 +1,6 @@
+@import '/src/assets/scss/variables';
 @import '/src/assets/scss/mixins';
 @import '/src/assets/scss/functions';
-@import '/src/assets/scss/variables';
-.container {
-    @include flex(
-        $direction: column,
-        $justify: space-around
-    );
-    padding: 1.25rem;
-    box-sizing: border-box;
-    min-height: 100vh;
-}
 
 main {
     @include flex(
