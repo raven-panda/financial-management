@@ -24,14 +24,16 @@ export class HomeComponent {
       chartName: 'financial',
       chartType: "pie",
       chartData: [],
-      total: 0
+      total: 0,
+      routerLink: '/finances'
     },
     {
       chartName: "Real Estates",
       chartType: "column",
       chartData: [],
       chartYaxis: 'Amount',
-      total: 0
+      total: 0,
+      routerLink: '/real-estates'
     }
   ]
 
@@ -73,7 +75,8 @@ export class HomeComponent {
             chartName: "Financial",
             chartType: "pie",
             chartData: this.cds.financials,
-            total: this.cds.totalFinancialsAmount
+            total: this.cds.totalFinancialsAmount,
+            routerLink: '/finances'
           },
           {
             chartName: "Real Estates",
@@ -81,7 +84,8 @@ export class HomeComponent {
             chartData: this.cds.estates,
             chartXaxis: this.cds.estatesName,
             chartYaxis: 'Amount',
-            total: this.cds.totalEstatesAmount
+            total: this.cds.totalEstatesAmount,
+            routerLink: ''
           }
         ]
       }

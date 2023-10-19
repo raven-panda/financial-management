@@ -23,7 +23,7 @@
                 <mat-card-header>
                     <div class="card-actions">
                         <button [class]="'btn-add ' + card.chartName" (click)="addInvestment(card.chartName)">Add Investment</button>
-                        <button [class]="'btn-see-all ' + card.chartName">See all Investments</button>
+                        <button [class]="'btn-see-all ' + card.chartName" [routerLink]="card.routerLink">See all Investments</button>
                     </div>
                 </mat-card-header>
                 <mat-card-content>
