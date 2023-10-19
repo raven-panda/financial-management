@@ -65,25 +65,6 @@ mat-card {
         @include flex(row);
     }
 }
-.invests-list {
-    thead {
-        background: $bg_tertiary;
-    }
-    tr {
-        display: grid;
-        grid: auto/2fr 1fr 1fr;
-    }
-    th, td {
-        border: solid 1px changeOpacity($text_color, 0.1);
-        padding: 0 5px;
-    }
-}
 .card-overview {
     column-gap: 50px;
-}
-.header-invests-list {
-    @extend .invests-list;
-    thead, th, td {
-        padding: 5px 20px;
-    }
 }

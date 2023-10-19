@@ -7,24 +7,7 @@
                 <div class="card-core card-overview">
                     <div class="last-investments card-col">
                         <h3>Your last investments</h3>
-                        <table class="header-invests-list">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Amount</th>
-                                    <th>Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <ng-template ngFor let-investment [ngForOf]="lastInvestments">
-                                    <tr>
-                                        <td>{{investment[0]}}</td>
-                                        <td>{{investment[1]}}</td>
-                                        <td>{{investment[2] | date: 'MM-dd-yyyy'}}</td>
-                                    </tr>
-                                </ng-template>
-                            </tbody>
-                        </table>
+                        <app-table name="lastInvestments" [arrayData]="lastInvestments"></app-table>
                     </div>
                     <div class="card-col">
                         <h4>Recently, you invested : ${{totalLastInvesments}}</h4>
@@ -55,24 +38,7 @@
                             <div>
                                 <h3>Total invested : ${{card.total}}</h3>
                             </div>
-                            <table class="invests-list">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Amount</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <ng-template ngFor let-investment [ngForOf]="card.chartData">
-                                        <tr>
-                                            <td>{{investment[0]}}</td>
-                                            <td>${{investment[1]}}</td>
-                                            <td>{{investment[2] | date: 'MM-dd-yyyy'}}</td>
-                                        </tr>
-                                    </ng-template>
-                                </tbody>
-                            </table>
+                            <app-table name="dahsboardInvestments" [arrayData]="card.chartData"></app-table>
                         </div>
                     </div>
                 </mat-card-content>

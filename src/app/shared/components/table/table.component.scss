@@ -1,0 +1,20 @@
+@import '/src/assets/scss/variables', '/src/assets/scss/functions';
+.invests-list {
+    width: 100%;
+    thead {
+        background: $bg_tertiary;
+    }
+    tr {
+        display: grid;
+        grid: auto/2fr 1fr 1fr;
+    }
+    th, td {
+        border: solid 1px changeOpacity($text_color, 0.1);
+        padding: 0 5px;
+    }
+}
+.header-invests-list {
+    thead, th, td {
+        padding: 5px 20px;
+    }
+}

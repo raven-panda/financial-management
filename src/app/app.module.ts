@@ -20,7 +20,8 @@ import { SidemenuComponent } from './shared/components/sidemenu/sidemenu.compone
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ChartComponent } from './shared/components/chart/chart.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ModalboxComponent } from './shared/components/modalbox/modalbox.component'
+import { ModalboxComponent } from './shared/components/modalbox/modalbox.component';
+import { TableComponent } from './shared/components/table/table.component'
 
 
 
@@ -30,7 +31,8 @@ import { ModalboxComponent } from './shared/components/modalbox/modalbox.compone
     HomeComponent,
     SidemenuComponent,
     ChartComponent,
-    ModalboxComponent
+    ModalboxComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

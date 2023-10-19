@@ -1,0 +1,18 @@
+<table class="invests-list" [ngClass]="{'header-invests-list': name === 'lastInvestments'}">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-template ngFor let-data [ngForOf]="arrayData">
+            <tr>
+                <td>{{data[0]}}</td>
+                <td>{{data[1]}}</td>
+                <td>{{data[2] | date: 'MM-dd-yyyy'}}</td>
+            </tr>
+        </ng-template>
+    </tbody>
+</table>
