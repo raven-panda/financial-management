@@ -4,6 +4,11 @@ export interface CardTempalting {
     chartData: Array<Array<string|number|Date>>,
     total: number,
     routerLink: string,
-    chartXaxis?: Array<string>;
-    chartYaxis?: string;
+    chartXaxis?: Array<string>,
+    chartYaxis?: string
+}
+
+export interface TableTemplating {
+    head: string[],
+    core: any[]
 }

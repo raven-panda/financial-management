@@ -7,7 +7,7 @@
                 <div class="card-core card-overview">
                     <div class="last-investments card-col">
                         <h3>Your last investments</h3>
-                        <app-table name="lastInvestments" [arrayData]="lastInvestments"></app-table>
+                        <app-table name="lastInvestments" [head]="tableParam.head" [arrayData]="lastInvestments"></app-table>
                     </div>
                     <div class="card-col">
                         <h4>Recently, you invested : ${{totalLastInvesments}}</h4>
@@ -38,7 +38,7 @@
                             <div>
                                 <h3>Total invested : ${{card.total}}</h3>
                             </div>
-                            <app-table name="dahsboardInvestments" [arrayData]="card.chartData"></app-table>
+                            <app-table name="dahsboardInvestments" [head]="tableParam.head" [arrayData]="card.chartData"></app-table>
                         </div>
                     </div>
                 </mat-card-content>

@@ -22,8 +22,7 @@ import { ChartComponent } from './shared/components/chart/chart.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalboxComponent } from './shared/components/modalbox/modalbox.component';
 import { TableComponent } from './shared/components/table/table.component';
-import { FinancesComponent } from './finances/finances.component'
-
+import { FinancesComponent } from './finances/finances.component';
 
 
 @NgModule({

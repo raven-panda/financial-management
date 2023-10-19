@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CardTempalting } from 'src/app/core/models/cardtemplating';
+import { CardTempalting, TableTemplating } from 'src/app/core/models/cardtemplating';
 import { ChartdataService } from '../core/services/chartdata/chartdata.service';
 import { BackfetchService } from '../core/services/backfetch/backfetch.service';
 import { combineLatest } from 'rxjs';
@@ -25,7 +25,7 @@ export class HomeComponent {
       chartType: "pie",
       chartData: [],
       total: 0,
-      routerLink: '/finances'
+      routerLink: '/finances',
     },
     {
       chartName: "Real Estates",
@@ -33,9 +33,14 @@ export class HomeComponent {
       chartData: [],
       chartYaxis: 'Amount',
       total: 0,
-      routerLink: '/real-estates'
+      routerLink: '/real-estates',
     }
   ]
+
+  public tableParam: TableTemplating = {
+    head: ['Name', 'Amount', 'Date'],
+    core: []
+  }
 
   public lastInvestments: Array<Array<string|number|Date>> = [];
   public totalLastInvesments: number = 0;

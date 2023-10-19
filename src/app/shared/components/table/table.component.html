@@ -1,17 +1,19 @@
 <table class="invests-list" [ngClass]="{'header-invests-list': name === 'lastInvestments'}">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Date</th>
+            <ng-template ngFor let-item [ngForOf]="head">
+                <th> {{item}} </th>
+            </ng-template>
         </tr>
     </thead>
     <tbody>
         <ng-template ngFor let-data [ngForOf]="arrayData">
             <tr>
-                <td>{{data[0]}}</td>
-                <td>${{data[1]}}</td>
-                <td>{{data[2] | date: 'MM-dd-yyyy'}}</td>
+                <ng-template ngFor let-item [ngForOf]="data">
+                    <td *ngIf="!isDate(item) && !isInteger(item)"> {{item}} </td>
+                    <td *ngIf="isInteger(item)"> ${{item}} </td>
+                    <td *ngIf="isDate(item)"> {{item | date: 'MM-dd-yyyy'}} </td>
+                </ng-template>
             </tr>
         </ng-template>
     </tbody>
