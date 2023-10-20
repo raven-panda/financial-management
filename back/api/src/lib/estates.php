@@ -58,7 +58,8 @@
                     if ($err->getCode() === "23000") {
                         $GLOBALS['response'] = $RES->errorMessage(202);
                     } else {
-                        $GLOBALS['response'] = $RES->errorMessage(200);
+                        //$GLOBALS['response'] = $RES->errorMessage(200);
+                        $GLOBALS['response'] = $err->getMessage();
                     }
                 }
 
