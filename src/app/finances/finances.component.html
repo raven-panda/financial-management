@@ -1,3 +1,15 @@
-<div class="container">
-    <p>Finances works !</p>
+<div class="container row">
+    <mat-card>
+        <mat-card-header>
+            <h1>Financial Investments overview</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <div>
+                <app-table name="threeCol" [head]="investmentsRoiTable.head" [arrayData]="investmentsRoiTable.core"></app-table>
+            </div>
+            <div>
+                <app-table name="twoCol" [head]="investmentsStatusTable.head" [arrayData]="investmentsStatusTable.core"></app-table>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>

@@ -1,4 +1,4 @@
-<table class="invests-list" [ngClass]="{'header-invests-list': name === 'lastInvestments'}">
+<table class="invests-list" [ngClass]="{'header-invests-list': name === 'threeCol', 'finances-invests-list': name === 'twoCol'}">
     <thead>
         <tr>
             <ng-template ngFor let-item [ngForOf]="head">

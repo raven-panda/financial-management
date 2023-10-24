@@ -1,0 +1,15 @@
+@import '/src/assets/scss/variables';
+@import '/src/assets/scss/mixins';
+.container{
+    gap: 20px;
+    &.row {
+        flex-direction: row;
+    }
+    &.col {
+        @include grid(
+            $rows: 1fr 1fr
+        );
+        padding: 0;
+        
+    }
+}

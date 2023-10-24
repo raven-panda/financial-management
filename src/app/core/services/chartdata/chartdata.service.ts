@@ -29,6 +29,29 @@ export class ChartdataService {
     });
   }
 
+  public get financialsStatus(): Array<Array<string|number>> {
+    const statusTotals: { [status: string]: number } = {};
+
+    this.financialsData.forEach(obj => {
+      const { status, amount } = obj;
+      
+      if (status in statusTotals) {
+        statusTotals[status] += amount;
+      } else {
+        statusTotals[status] = amount;
+      }
+    });
+
+    return Object.entries(statusTotals);
+  }
+
+  public get financialsAndRoi(): any {
+    return this.financialsData.map(obj => {
+      let { name, roi, amount } = obj;
+      return Object.values({ name, amount, roi });
+    });
+  }
+
   /**
    * @returns Name and amount of each real estates investments in an array
    */

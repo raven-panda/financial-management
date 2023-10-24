@@ -1,4 +1,5 @@
 @import '/src/assets/scss/variables';
+@import '/src/assets/scss/mixins';
 @import '/src/assets/scss/functions';
 
 .invests-list {
@@ -8,7 +9,7 @@
     }
     tr {
         display: grid;
-        grid: auto/2fr 1fr 1fr;
+        grid: auto/ 2fr 1fr 1fr;
     }
     th, td {
         border: solid 1px changeOpacity($text_color, 0.1);
@@ -18,5 +19,15 @@
 .header-invests-list {
     thead, th, td {
         padding: 5px 20px;
+    }
+}
+.finances-invests-list {
+    tr {
+        @include grid(
+            $columns: 2fr 1fr
+        );
+    }
+    th, td {
+        padding: 5px 15px;
     }
 }
