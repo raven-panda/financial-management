@@ -1,0 +1,33 @@
+version: '3.8'
+volumes:
+  investdb:
+services:
+  api:
+    build: 
+      dockerfile: ./back/api/Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./back/api/src
+        target: /var/www/html
+    environment:
+      - MYSQL_HOST=database
+      - MYSQL_DATABASE=investdb
+      - MYSQL_USER=api_access
+      - MYSQL_PASSWORD=dev1234
+  database:
+    image: mysql
+    ports:
+      - 3307:3306
+    volumes:
+      - type: volume
+        source: investdb
+        target: /var/lib/mysql
+      - ./database/:/docker-entrypoint-initdb.d/
+    environment:
+      - MYSQL_HOST=database
+      - MYSQL_ROOT_PASSWORD=bigunhackablepassword1712
+      - MYSQL_DATABASE=investdb
+      - MYSQL_USER=api_access
+      - MYSQL_PASSWORD=dev1234
